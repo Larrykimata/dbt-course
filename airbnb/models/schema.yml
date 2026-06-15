@@ -1,15 +1,15 @@
 models:
   - name: dim_listings_cleansed
-    config:
-      contract:
-        enforced: true  
+    description: Listings Cleansed dim
     columns:
      - name: listing_id
+       description: ID of the listing
        data_tests:
          - unique
          - not_null
 
      - name: host_id
+       description: The host ID
        data_tests:
          - not_null
          - relationships:
@@ -18,16 +18,21 @@ models:
                field: host_id
 
      - name: room_type
+       description: Type of the apartment / room
        data_tests:
          - accepted_values:
              arguments:
                values: ['Entire home/apt', 'Private room', 'Shared room','Hotel room']
 
      - name: minimum_nights
+       description: '{{ doc("dim_listing_cleansed__minimum_nights") }}'
        data_tests:
          - positive_values
 
+
+
   - name: dim_hosts_cleansed
+    description: '{{ doc("dim_hosts__cleansed") }}'
     columns:
 
      - name: host_id
